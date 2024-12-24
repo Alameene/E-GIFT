@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Gift</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #8e44ad, #3498db);
+            font-family: 'Arial', sans-serif;
+        }
+        .gift-container {
+            text-align: center;
+            color: #fff;
+        }
+        .gift-box {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background-color: #e74c3c;
+            border-radius: 10px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: float 2s infinite;
+        }
+        .gift-box::before, .gift-box::after {
+            content: '';
+            position: absolute;
+            background-color: #f39c12;
+            border-radius: 5px;
+        }
+        .gift-box::before {
+            width: 100%;
+            height: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .gift-box::after {
+            width: 20px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        video {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        function openGift() {
+            const giftBox = document.querySelector('.gift-box');
+            const message = document.querySelector('.message');
+            const video = document.querySelector('video');
+
+            giftBox.classList.add('hidden');
+            message.classList.remove('hidden');
+            video.classList.remove('hidden');
+            video.play();
+        }
+    </script>
+</head>
+<body>
+    <div class="gift-container">
+        <div class="gift-box" onclick="openGift()"></div>
+        <div class="message hidden">
+            🎉 Surprise! Here’s a heartfelt note just for you: <br>
+            <em>"Dear Mardiya, you are truly amazing! I hope this day brings you endless joy and love. Thank you for being the incredible person you are." 💝</em>
+        </div>
+        <video class="hidden" controls>
+            <source src="surprise_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</body>
+</html>
